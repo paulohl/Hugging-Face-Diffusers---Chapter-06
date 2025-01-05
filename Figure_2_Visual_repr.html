@@ -1,0 +1,39 @@
+<div>Figure 2 Visual representation of the GPT-2 architecture.</div><h2 data-label="example-implementing-text-generation-with-gpt-2" class="ltx_title_subsection">Example: Implementing Text Generation with
+GPT-2</h2><div>In the example velos, we’ll demonstrate the practical application of the
+Hugging Face Diffusion library for text generation tasks. We will
+utilize a pre-trained GPT model, known for its robust performance in
+generating coherent and context-rich text. This example will guide you
+through setting up the model, preparing the input data, and executing
+the generation process to create text that is not only grammatically
+correct but also contextually relevant:</div><div>“python</div><div>from transformers import GPT2LMHeadModel, GPT2Tokenizer, pipeline</div><div># Load pre-trained GPT-2 model and tokenizer
+tokenizer = GPT2Tokenizer.from_pretrained(’gpt2’)
+model = GPT2LMHeadModel.from_pretrained(’gpt2’)</div><div># Initialize text generation pipeline
+text_generator = pipeline(’text-generation’, model=model,
+tokenizer=tokenizer)</div><div># Generate text based on a prompt
+prompt = ”In a distant future, humanity has ventured far into the
+cosmos”
+generated_texts = text_generator(prompt, max_length=100,
+num_return_sequences=1)</div><div>for generated_text in generated_texts:
+print(generated_text[’generated_text’])</div><div>“</div><div>Let us delve into the details of the code snippet to better understand
+its functionality. The code initiates by loading a pre-trained
+Generative Pre-trained Transformer (GPT) model from the Hugging Face
+library, renowned for its text generation capabilities. Using the
+pipeline function, it sets up a text generation pipeline that simplifies
+the process of inputting a prompt and receiving generated text. We feed
+a creative prompt into the system and the model generates a sequence of
+text based on this input, showcasing how the model applies its
+understanding of language patterns to produce contextually appropriate
+content.</div><div>The image below was extracted from the “articles” section of the
+Hugging Face Company official web site. The content of the sites has
+frequently updated application scenarios. On this example (Noyan, 2023),
+the image below illustrates “the text-to-text generation model. These
+models are trained in text pairs, which can be questions and answers or
+instructions and responses. The most popular ones are T5 and BART
+(which, as of now, aren’t state-of-the-art). Google has recently
+released the FLAN-T5 series of models. FLAN is a recent technique
+developed for instruction fine-tuning, and FLAN-T5 is essentially T5
+fine-tuned using FLAN. As of now, the FLAN-T5 series of models are
+state-of-the-art and open-source, available on the Hugging Face Hub.
+Note that these are different from instruction-tuned causal language
+models, although the input-output format might seem similar. Below you
+can see an illustration of how these models work.”</div>
